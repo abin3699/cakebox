@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="container mt-5">
+        <table class="table table-striped">
+            <tr>
+                <td>Types</td>
+                <td>Name</td>
+                <td>image</td>
+                <td>Action</td>
+            </tr>
+            {%for ck in cakes%}
+
+            <tr>
+                <td>{{ck.types}}</td>
+                <td>{{ck.name}}</td>
+                
+                <td>
+                  <img src="{{ck.image.url}}" alt="" width="200px" height="200px" style="object-fit: ;">
+                </td>
+                <td>
+                    <a href="{%url 'cake-remove' ck.id %}" class="ms-3 text-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a href="{%url 'add-variant' ck.id %}" class="ms-3 text-success"><i class="fa-regular fa-square-plus"></i></a>
+                    <a href="{%url 'cake-detail' ck.id%}" class="ms-3 text-warning"><i class="fa-solid fa-eye"></i></a>
+                </td>
+            </tr>
+
+            {%endfor%}
+        </table>
+    </div>
+    
+</body>
+</html>
