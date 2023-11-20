@@ -20,8 +20,8 @@ class Catagory(models.Model):
     is_available=models.BooleanField(default=True)
 
 
-    def __str__(self):
-        return self.types
+    # def __str__(self):
+    #     return self.types
     
 
 class Cakes(models.Model):
@@ -43,6 +43,12 @@ class Cakes(models.Model):
     name=models.CharField(max_length=200,choices=options)
     image=models.ImageField(upload_to="image")
     Catagory=models.ForeignKey(Catagory,on_delete=models.CASCADE)
+
+    @property
+    def variants(self):
+        qs=self.cake_variant_set.all()
+        # qs=Cake_variant.objects.filter(Cake=self)
+        return qs
 
     def __str__(self):
         return self.name

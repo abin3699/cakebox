@@ -14,3 +14,17 @@ authorization:nill
 status:progress
 
 ==============================
+3)cake detail
+
+url:http://127.0.0.1:8000/api/cakes/1/
+method:get
+
+===========================
+4)add to cart api
+
+url:http://127.0.0.1:8000/api/cakes/{varient_id}/cart_add/
+method:post
+authorization:username,password
+body:nill
+
+============================
