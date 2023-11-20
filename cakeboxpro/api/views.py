@@ -2,7 +2,10 @@ from django.shortcuts import render
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from api.serialiazers import Userserializer
+from rest_framework.viewsets import ViewSet,ModelViewSet
+
+from api.serialiazers import Userserializer,Cakeserializer
+from cakebxapp.models import Cakes
 # Create your views here.
 
 class UsercreationView(APIView):
@@ -14,3 +17,9 @@ class UsercreationView(APIView):
             return Response(data=serializer.data)
         else:
             return Response(data=serializer.errors)
+
+
+class Cakesview(ModelViewSet):
+    serializer_class=Cakeserializer
+    model=Cakes
+    queryset=Cakes.objects.all()
