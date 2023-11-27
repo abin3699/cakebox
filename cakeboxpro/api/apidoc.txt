@@ -28,3 +28,43 @@ authorization:username,password
 body:nill
 
 ============================
+5)cart list
+
+url:http://127.0.0.1:8000/api/carts/
+method:get
+authorization:username,password
+body:nill
+
+==================================
+6)cart delete
+
+url:http://127.0.0.1:8000/api/carts/{cart_id}/
+method:delete
+authorization:username,password
+body:nill
+
+===================================
+7) place order
+
+url:http://127.0.0.1:8000/api/cakes/{varient_id}/place_order/
+method:post
+body:address
+authorization:username,password
+
+=========================================
+8)order list
+
+url:http://127.0.0.1:8000/api/orders/
+method:get
+authorization:username,password
+body:nill
+
+=========================
+9) order delete
+
+url:http://127.0.0.1:8000/api/orders/{order_id}/
+method:delete
+authorization:username,password
+body:nill
+
+===========================

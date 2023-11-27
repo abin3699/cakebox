@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from cakebxapp.models import User,Cakes,Cake_variant,Cart
+from cakebxapp.models import User,Cakes,Cake_variant,Cart,Order
 
 class Userserializer(serializers.ModelSerializer):
 
@@ -32,7 +32,7 @@ class Cakeserializer(serializers.ModelSerializer):
 
 
 class Cartserializer(serializers.ModelSerializer):
-
+    
     Cake_variant=serializers.CharField(read_only=True)
     user=serializers.CharField(read_only=True)
     status=serializers.CharField(read_only=True)
@@ -40,4 +40,18 @@ class Cartserializer(serializers.ModelSerializer):
 
     class Meta:
         model=Cart
+        fields="__all__"
+
+
+class Orderserializer(serializers.ModelSerializer):
+
+    id=serializers.CharField(read_only=True)
+    Cake_variant=serializers.CharField(read_only=True)
+    status=serializers.CharField(read_only=True)
+    orderd_date=serializers.CharField(read_only=True)
+    expected_date=serializers.CharField(read_only=True)
+    user=serializers.CharField(read_only=True)
+
+    class Meta:
+        model=Order
         fields="__all__"

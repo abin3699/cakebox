@@ -67,6 +67,9 @@ class Cake_variant(models.Model):
     size=models.CharField(max_length=200,choices=options,default="1-kg")
     price=models.PositiveIntegerField()
 
+    def __str__(self):
+        return self.Cake.name
+
 
 class Offer(models.Model):
     Cake_variant=models.ForeignKey(Cake_variant,on_delete=models.CASCADE)
