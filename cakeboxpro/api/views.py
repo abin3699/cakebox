@@ -114,6 +114,29 @@ class Orderview(ViewSet):
             return Response(data={"msg":"deleted"})
         else:
             return Response(data={"msg":"permission denied"})
+        
+
+class Reviewsview(ViewSet):
+    # authentication_classes=[authentication.BasicAuthentication]
+    authentication_classes=[authentication.TokenAuthentication]
+    permission_classes=[permissions.IsAuthenticated]
+
+    def list(self,request,*args,**kwargs):
+        qs=Reviews.objects.filter(user=request.user)
+        serializer=Reviewserializer(qs,many=True)
+        return Response(data=serializer.data)
+    
+    def destroy(self,request,*args,**kwargs):
+        id=kwargs.get("pk")
+        instance=Reviews.objects.get(id=id)
+        if instance.user==request.user:
+            instance.delete()
+            return Response(data={"msg":"deleted"})
+        else:
+            return Response(data={"msg":"permission denied"})
+
+
+
 
 
 

@@ -84,6 +84,22 @@ authorization:auth token
 body:rating,cmnt
 
 ===========================
+12)review list
+
+url:http://127.0.0.1:8000/api/reviews/
+method:get
+authorization:username,password
+body:nill
+
+========================
+13)review delete
+
+url:http://127.0.0.1:8000/api/reviews/{review_id}/
+method:delete
+authorization:username,password
+body:nill
+
+===========================
 
 
 
