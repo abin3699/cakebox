@@ -112,7 +112,7 @@ from django.core.validators import MinValueValidator,MaxValueValidator
 
 class Reviews(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    Cake_variant=models.ForeignKey(Cake_variant,on_delete=models.CASCADE)
+    cake=models.ForeignKey(Cakes,null=True,on_delete=models.SET_NULL)
     rating=models.PositiveIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
     comment=models.CharField(max_length=300)
 

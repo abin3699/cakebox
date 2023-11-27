@@ -7,8 +7,8 @@ from rest_framework.decorators import action
 from rest_framework import authentication
 from rest_framework import permissions
 
-from api.serialiazers import Userserializer,Cakeserializer,Cartserializer,Orderserializer
-from cakebxapp.models import Cakes,Cake_variant,Cart,Order
+from api.serialiazers import Userserializer,Cakeserializer,Cartserializer,Orderserializer,Reviewserializer
+from cakebxapp.models import Cakes,Cake_variant,Cart,Order,Reviews
 # Create your views here.
 
 class UsercreationView(APIView):
@@ -42,6 +42,22 @@ class Cakesview(ModelViewSet):
             return Response(data=serializer.data)
         else:
             return Response(data=serializer.errors)
+
+    
+    @action(methods=["post"],detail=True)
+    def add_review(self,request,*args,**kwargs):
+        c_id=kwargs.get("pk")
+        cake_obj=Cakes.objects.get(id=c_id)
+        user=request.user
+        
+        serializer=Reviewserializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(cake=cake_obj,user=user)
+            return Response(data=serializer.data)
+        else:
+            return Response(data=serializer.errors)
+
+
         
 
     @action(methods=["post"],detail=True)    
@@ -98,3 +114,6 @@ class Orderview(ViewSet):
             return Response(data={"msg":"deleted"})
         else:
             return Response(data={"msg":"permission denied"})
+
+
+

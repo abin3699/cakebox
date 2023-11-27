@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from cakebxapp.models import User,Cakes,Cake_variant,Cart,Order
+from cakebxapp.models import User,Cakes,Cake_variant,Cart,Order,Reviews
 
 class Userserializer(serializers.ModelSerializer):
 
@@ -40,6 +40,17 @@ class Cartserializer(serializers.ModelSerializer):
 
     class Meta:
         model=Cart
+        fields="__all__"
+
+
+class Reviewserializer(serializers.ModelSerializer):
+
+    id=serializers.CharField(read_only=True)
+    cake=serializers.CharField(read_only=True)
+    user=serializers.CharField(read_only=True)
+
+    class Meta:
+        model=Reviews
         fields="__all__"
 
 

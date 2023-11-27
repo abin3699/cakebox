@@ -76,5 +76,14 @@ authorization:username,password
 headers:nill
 
 =======================
+11) add review
+
+url:http://127.0.0.1:8000/api/cakes/{cakes_id}/add_review/
+metho:post
+authorization:auth token
+body:rating,cmnt
+
+===========================
+
 
 
