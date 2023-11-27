@@ -68,3 +68,13 @@ authorization:username,password
 body:nill
 
 ===========================
+10)obtain token
+
+url:http://127.0.0.1:8000/api/token/
+metho:post
+authorization:username,password
+headers:nill
+
+=======================
+
+

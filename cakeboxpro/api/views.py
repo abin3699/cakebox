@@ -23,7 +23,8 @@ class UsercreationView(APIView):
 
 
 class Cakesview(ModelViewSet):
-    authentication_classes=[authentication.BasicAuthentication]
+    # authentication_classes=[authentication.BasicAuthentication]
+    authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[permissions.IsAuthenticated]
     
     serializer_class=Cakeserializer
@@ -80,7 +81,8 @@ class CartsView(ViewSet):
         
 
 class Orderview(ViewSet):
-    authentication_classes=[authentication.BasicAuthentication]
+    # authentication_classes=[authentication.BasicAuthentication]
+    authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[permissions.IsAuthenticated]
 
     def list(self,request,*args,**kwargs):
